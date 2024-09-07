@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Changing a Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <style>
+      h3 {
+        text-align: center;
+      }
+
+      body {
+        background-color: #99ccff;
+        padding: 0.5em;
+      }
+
+      #displayArea {
+        background-color: #fff;
+        border-radius: 25px;
+        height: 15em;
+        text-align: center;
+        box-shadow: 7px 7px 5px #606060;
+        margin-top: 1.5em;
+      }
+
+      #buttonArea {
+        text-align: center;
+        margin-top: 1.5em;
+      }
+    </style>
+
+    <script>
+      function input() {
+        let four = window.prompt("What is 2 + 2", "");
+        let tux = window.prompt("What is the mascot of GNU + Linux", "");
+        let yes = window.prompt("Should we blow up the moon", "");
+        let rick = window.prompt("Never Gonna Give You Up", "");
+        let out = `<p> 2 + 2 = ${four}</p> <p>The mascot of GNU + Linux is ${tux}</p> <p>Should we blow up the moon ${yes}</p> <p>Never Gonna Give You Up ${rick}</p>`;
+        document.getElementById("displayArea").innerHTML = out;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h3>Using JavaScript to Modify a Webpage</h3>
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6" id="displayArea">
+          <p>
+            This is my display area. I can use JavaScript to change its
+            contents.
+          </p>
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6" id="buttonArea">
+          <button
+            type="button"
+            onclick="input()"
+            class="btn btn-outline-secondary"
+          >
+            Click
+          </button>
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+    </div>
+  </body>
+</html>

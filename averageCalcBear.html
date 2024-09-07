@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Average</title>
+    <style>
+      body {
+        font-family: arial;
+        font-size: 14pt;
+        background: #e6f2ff;
+      }
+
+      table {
+        margin-right: auto;
+        margin-left: auto;
+        width: 40%;
+        background: white;
+        padding: 20px;
+        border: solid blue 2px;
+        border-radius: 25px;
+        box-shadow: 7px 7px 5px #afafaf;
+      }
+      th,
+      td {
+        width: 50%;
+      }
+      h1 {
+        text-align: center;
+        color: blue;
+        text-shadow: 3px 3px 1px #afafaf;
+      }
+
+      input {
+        width: 200px;
+        height: 30px;
+        font-size: 14pt;
+        text-align: center;
+      }
+    </style>
+    <script>
+      function calc() {
+        let assign = Number(document.getElementById("assignIn").value);
+        let test = Number(document.getElementById("testsIn").value);
+        let proj = Number(document.getElementById("projectIn").value);
+        let fGrade = (assign * 0.3 + test * 0.3 + proj * 0.4).toFixed(2);
+        console.log(fGrade);
+        let letter = "A";
+
+        if (fGrade >= 90) {
+          letter = "A";
+        } else if (fGrade >= 80) {
+          letter = "B";
+        } else if (fGrade >= 70) {
+          letter = "C";
+        } else if (fGrade >= 60) {
+          letter = "D";
+        } else {
+          letter = "F";
+        }
+
+        document.getElementById("averageOut").value = `${fGrade} ${letter}`;
+      }
+      function reset() {
+        document.getElementById("assignIn").value = "";
+        document.getElementById("testIn").value = "";
+        document.getElementById("projectIn").value = "";
+        document.getElementById("averageOut").value = "";
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Grade Calculator</h1>
+    <form id="gradeForm">
+      <table>
+        <tr>
+          <th>Assignments:</th>
+          <th><input type="number" id="assignIn" min="0" max="100" /></th>
+        </tr>
+        <tr>
+          <th>Tests:</th>
+          <th><input type="number" id="testsIn" min="0" max="100" /></th>
+        </tr>
+        <tr>
+          <th>Project:</th>
+          <th><input type="number" id="projectIn" min="0" max="100" /></th>
+        </tr>
+        <tr>
+          <th>
+            <input
+              type="button"
+              onclick="calc()"
+              value="Calculate"
+              id="btnCalc"
+            />
+          </th>
+          <th><input type="reset" value="Reset" onclick="reset()" /></th>
+        </tr>
+        <tr>
+          <th>Final grade:</th>
+          <th><input type="text" id="averageOut" readonly /></th>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

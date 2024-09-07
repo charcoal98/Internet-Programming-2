@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Changing a Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	  
+	<style>
+		h3 	{
+			text-align: center;
+		}
+	
+		body	{
+			background-color: #99ccff;
+			padding: .5em;
+		}
+	
+		#displayArea	{
+			background-color: #fff;
+			border-radius: 25px;
+			height: 15em;					
+			text-align: center;					
+			box-shadow: 7px 7px 5px #606060;
+			margin-top: 1.5em;
+		}
+		
+		#buttonArea		{
+			text-align: center;
+			margin-top: 1.5em;
+		}
+    .highlight{
+      background: yellow;
+      color: black;
+    }
+	
+	</style>
+	
+	<script>	
+	function processForm() {
+        let noun1, noun2, noun3, noun4;
+		let verb1, verb2, verb3, state, name, body;
+        name = document.getElementById("name").value;
+        body = document.getElementById("body").value;
+        state = document.getElementById("state").value;
+		//nouns
+		noun1 = document.getElementById("noun1").value;
+		noun2 = document.getElementById("noun2").value;
+		noun3 = document.getElementById("noun3").value;
+		noun4 = document.getElementById("noun4").value;
+
+		//verb
+
+		verb1 = document.getElementById("verb1").value;
+		verb2 = document.getElementById("verb2").value;
+		verb3 = document.getElementById("verb3").value;
+    
+
+        let out = `<p>A <span class='highlight'>${noun1}</span> in <span class='highlight'>${state}</span> was arrested this morning after he <span class='highlight'>${verb1}</span>
+           a in front of <span class='highlight'>${noun2}</span>. <span class='highlight'>${name}</span>,
+			 had a history of <span class='highlight'>${verb2}</span>, but no one-not even his <span class='highlight'>${noun3}</span>
+       -ever imagined he'd <span class='highlight'>${verb3}</span> with a <span class='highlight'>${noun4}</span> stuck in his <span class='highlight'>${body}</span></p>`;
+
+        console.log(noun1, noun2, noun3, noun4, verb1, verb2, verb3, state, name, body);
+        document.getElementById("displayArea").innerHTML = out;
+      }
+	</script>
+   
+</head>
+<body>
+
+<div class="container-fluid">
+	<h3>Using JavaScript to Modify a Webpage</h3>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4" id="formDiv">
+          <form>
+            <div class="form-group">
+              <label for="noun1">Noun</label>
+              <input
+                type="text"
+                class="form-control"
+                id="noun1"
+                placeholer="Enter a noun"
+                name="noun1"
+              />
+			  <label for="state">Wacky State</label>
+			  <input
+                type="text"
+                class="form-control"
+                id="state"
+                placeholer="Enter a State"
+                name="state"
+              />
+			  <label for="verb1">Verb</label>
+			  <input
+                type="text"
+                class="form-control"
+                id="verb1"
+                placeholer="Enter a verb"
+                name="verb1"
+              />
+			  <label for="noun1">Noun</label>
+              <input
+                type="text"
+                class="form-control"
+                id="noun2"
+                placeholer="Enter a noun"
+                name="noun2"
+              />
+			  <label for="name">Proper Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholer="Enter a proper name"
+                name="name"
+              />
+			  <label for="verb2">Verb</label>
+			  <input
+                type="text"
+                class="form-control"
+                id="verb2"
+                placeholer="Enter a verb"
+                name="verb2"
+              />
+			  <label for="noun3">Noun</label>
+              <input
+                type="text"
+                class="form-control"
+                id="noun3"
+                placeholer="Enter a noun"
+                name="noun3"
+              />
+			  <label for="verb3">Verb</label>
+			  <input
+                type="text"
+                class="form-control"
+                id="verb3"
+                placeholer="Enter a verb"
+                name="verb3"
+              />
+			  <label for="noun4">Noun</label>
+              <input
+                type="text"
+                class="form-control"
+                id="noun4"
+                placeholer="Enter a noun"
+                name="noun4"
+              />
+			  <label for="body">Part of the body</label>
+              <input
+                type="text"
+                class="form-control"
+                id="body"
+                placeholer="Enter a noun"
+                name="body"
+              />
+            </div>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="processForm()"
+            >
+              Process Form
+            </button>
+          </form>
+        </div>
+        <div class="col-md-4" id="displayArea">
+          <p>Output will go here</p>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+</div>
+</body>
+</html>

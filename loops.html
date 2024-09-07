@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Loop Examples</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <style>
+    h1 {
+      text-align: center;
+    }
+
+    body {
+      background-color: #ffff99;
+    }
+
+    #outputDiv {
+      min-height: 20em;
+      background-color: #ffffff;
+      border-radius: 20px;
+      text-align: center;
+      font-size: 1.5em;
+      border: solid #afafaf 2px;
+    }
+
+    #buttonDiv {
+      text-align: center;
+      margin-top: 1.5em;
+    }
+
+    .btn {
+      width: 100%;
+      margin: 10px;
+    }
+
+    table,
+    td {
+      border: 0px;
+    }
+
+    th  {
+      width: 443px;
+    }
+
+    tr:nth-child(odd) {
+      background-image: url("../images/LighterBG.png");
+
+    }
+
+    tr:nth-child(even) {
+      background-color: lightgrey;
+    }
+
+    table {
+      width: 100%;
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <h1>Temperture Conversions</h1>
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4">
+        <button class="btn btn-secondary" id="convert" onclick="tempSwitch()">
+          Fehrenheit to Celsius
+        </button>
+      </div>
+      <div class="col-4"></div>
+    </div>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-10" id="outputDiv"></div>
+      <div class="col-1"></div>
+    </div>
+  </div>
+  </div>
+</body>
+<script>
+  let isCels = true;
+  let fehrenhit = [];
+  for (i = 0; i <= 225; i += 5) {
+    fehrenhit[length] = i;
+  }
+
+  function tempSwitch() {
+    if (isCels) {
+      isCels = false;
+      document.getElementById("convert").innerHTML = "Celsius to Fehrenheit";
+    } else {
+      isCels = true;
+      document.getElementById("convert").innerHTML = "Fehrenheit to Celsius";
+    }
+
+    console.log(isCels);
+
+    Convert();
+  }
+
+  function Convert() {
+    let out = `<table>`;
+    if (isCels) {
+      out = "<table><tr><th>Celsius</th><th>Ferienheit</th><th>Kelvin</th></tr>";
+      for (i = 0; i < 101; i++) {
+        out += `<tr><td>${i}</td><td>${(i * 9) / 5 + 32}</td><td>${i + 273.15
+          }</td></tr>`;
+      }
+    } else {
+      out = "<table><tr><th>Ferienheit</th><th>Celsius</th><th>Kelvin</th></tr>";
+      for (i = 0; i <= 225; i += 5) {
+        out += `<tr><td>${i}</td><td>${(((i - 32) * 5) / 9).toFixed(
+          2
+        )}</td><td>${(((i - 32) * 5) / 9 + 273.15).toFixed(2)}</td></tr>`;
+      }
+    }
+    out += `</table>`;
+    console.log(out);
+    document.getElementById("outputDiv").innerHTML = out;
+  }
+  Convert();
+</script>
+
+</html>

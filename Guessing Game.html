@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guessing Game</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Minecraft_missing_texture_block.svg/1024px-Minecraft_missing_texture_block.svg.png"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/ocr-a-extended"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      :root {
+        --bg: #cfcfcf;
+        --secondary: #fafafa;
+        --primary: #cf4949;
+        --shadow: #7f7f6f;
+      }
+
+      body {
+        font-family: "OCR A Extended", sans-serif;
+        font-size: 16pt;
+        background: var(--bg);
+      }
+
+      #displayArea {
+        margin-right: auto;
+        margin-left: auto;
+        width: 40%;
+        background: var(--secondary);
+        padding: 20px;
+        border: solid var(--primary) 5px;
+        border-radius: 15px;
+      }
+      #button {
+        background: var(--bg);
+        border: solid var(--primary) 2px;
+        border-radius: 3px;
+        color: var(--primary);
+        text-align: center;
+        height: 40px;
+      }
+
+      #ans {
+        width: 80px;
+        height: 40px;
+      }
+
+      #displayArea {
+        width: 800px;
+        height: 366px;
+        text-align: center;
+      }
+      p {
+        text-align: center;
+        color: #000000;
+        font-size: x-large;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 0px;
+      }
+      h1 {
+        text-align: center;
+        color: var(--primary);
+      }
+
+      input {
+        width: 200px;
+        height: 30px;
+        font-size: 14pt;
+        text-align: center;
+      }
+
+      .high {
+        color: #4949cf;
+      }
+
+      .low {
+        color: #cf4949;
+      }
+
+      .correct {
+        color: #49cf49;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .center {
+        display: flex;
+        margin: 10px;
+        justify-content: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>I'm Think of a Number Between 1 and 100</h1>
+
+    <form class="container">
+      <div id="displayArea" class=""></div>
+      <div id="controller" class="center"></div>
+    </form>
+  </body>
+  <script>
+    let output = "";
+    let guessCount = 0;
+    var random = 0;
+
+    function GenerateRand() {
+      random = parseInt(Math.random() * 100 + 1);
+      guessCount = 0;
+      output = "";
+      document.getElementById("displayArea").innerHTML = "";
+      document.getElementById("controller").innerHTML = `<div class="center">
+          <input type="number" id="ans" min="1" max="100" />
+        </div>
+        <div class="center">
+          <input
+            id="button"
+            type="button"
+            onclick="Guess()"
+            value="Guess"
+            id="btnCheck"
+          />
+        </div>`;
+    }
+
+    function Guess() {
+      let ans = parseInt(document.getElementById("ans").value);
+
+      if (ans) {
+        guessCount++;
+        if (ans == random) {
+          EndGame(ans, true);
+        } else if (ans > random) {
+          output += `<p class='center row'><span class='col-3'>Guess ${guessCount}:</span><span class='col-3'>${ans}</span><span class="high col-3">▼ Lower</span></p>`;
+          if (guessCount == 7) {
+            EndGame(ans, false);
+          }
+        } else if (ans < random) {
+          output += `<p class='center row'><span class='col-3'>Guess ${guessCount}:</span><span class='col-3'>${ans}</span><span class="low col-3">▲ Higher</span></p>`;
+          if (guessCount == 7) {
+            EndGame(ans, false);
+          }
+        }
+        document.getElementById("displayArea").innerHTML = output;
+      }
+    }
+
+    function EndGame(ans, state) {
+      if (state) {
+        output += `<p class="center row">${ans} is <span class="correct"> &#10003 correct!</span> You got it in ${guessCount} Guesses.</p>`;
+      }
+      document.getElementById(
+        "controller"
+      ).innerHTML = `<input id="button" type="button" onclick="GenerateRand()" value="Start a New Game" id="btnCheck" />`;
+    }
+
+    GenerateRand();
+  </script>
+</html>

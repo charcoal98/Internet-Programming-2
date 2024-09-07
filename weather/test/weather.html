@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Weather</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <style>
+      h3 {
+        text-align: center;
+        color: #606060;
+      }
+
+      body {
+        background-color: skyblue;
+        padding: 0.5em;
+      }
+
+      #outputDiv {
+        background-color: #fff;
+        border-radius: 25px;
+        min-height: 26em;
+        text-align: center;
+        box-shadow: 7px 7px 5px #606060;
+        margin-top: 1.5em;
+      }
+
+      .outP {
+        margin-top: 55%;
+        font-size: x-large;
+      }
+
+      #buttonDiv {
+        text-align: center;
+        margin-top: 1.5em;
+      }
+      img {
+        max-height: 90%;
+        margin-top: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h3>Today's weather is:</h3>
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6" id="outputDiv">
+          <!--This is my display area. I can use JavaScript to change its contents.-->
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6" id="buttonDiv">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            onclick="randWeather()"
+          >
+            RANDOM Weather
+          </button>
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    //Array
+    let weatherDescript = ["Cloudy", "Raining", "Snowing", "Storming", "Sunny"];
+    function randWeather() {
+      let rand = parseInt(Math.random(0, 5) * 5);
+      console.log(rand);
+      let desc, img;
+      //Switch
+      switch (rand) {
+        case 0:
+          img = `<img class=wetherimg src="./images/Clouds.png">`;
+          break;
+        case 1:
+          img = `<img class=wetherimg src="./images/Rain.png">`;
+          break;
+        case 2:
+          img = `<img class=wetherimg src="./images/Snow.png">`;
+          break;
+        case 3:
+          img = `<img class=wetherimg src="./images/Storms.png">`;
+          break;
+        case 4:
+          img = `<img class=wetherimg src="./images/Sunny.png">`;
+          break;
+      }
+      document.getElementById(
+        "outputDiv"
+      ).innerHTML = `${img} <p>${weatherDescript[rand]}</p>`;
+    }
+  </script>
+</html>

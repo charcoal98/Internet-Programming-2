@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Arrays and Random Numbers</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <style>
+      h3 {
+        text-align: center;
+        color: #606060;
+      }
+
+      body {
+        background-color: #df80ff;
+        padding: 0.5em;
+      }
+
+      #outputDiv {
+        background-color: #fff;
+        border-radius: 25px;
+        min-height: 26em;
+        text-align: center;
+        box-shadow: 7px 7px 5px #606060;
+        margin-top: 1.5em;
+        background-image: url("./pics/4500.jpg");
+        background-size: cover;
+      }
+
+      .outP {
+        margin-top: 55%;
+        font-size: x-large;
+      }
+
+      #buttonDiv {
+        text-align: center;
+        margin-top: 1.5em;
+      }
+      img {
+        max-height: 90%;
+        margin-top: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h3>Arrays and Random Numbers</h3>
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6" id="outputDiv">
+          <!--This is my display area. I can use JavaScript to change its contents.-->
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6" id="buttonDiv">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            onclick="yesOrNo()"
+          >
+            Yes/No
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            onclick="randFortune()"
+          >
+            RANDOM Fortune
+          </button>
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let yesNo = [
+      "yes",
+      "no",
+      "maybe so",
+      "definitly not",
+      "absolutly",
+      "depends on the phase of the moon",
+      "It's likly",
+      "Very unlikly",
+      "if it is your will",
+      "don't hold your breath",
+    ];
+    let fortune = [
+      "The love of your life is stepping into your planet this summer.",
+      "Never Gonna Give You Up",
+      "You'll get nowhere by standing still",
+      "The stars don't smile kindly on you",
+      "You will die some time in the future",
+      "Luck is in your favor",
+      "You will give Nathan Allen Bear $100",
+      "There is great love in your future",
+      "The early bird gets the worm, but the second mouse gets the cheese",
+      "All things are difficult before they are easy",
+    ];
+
+    function yesOrNo() {
+      let rand = parseInt(Math.random(0, 10 + 1) * 10);
+      document.getElementById(
+        "outputDiv"
+      ).innerHTML = `<h1 class="outP">${yesNo[rand]}</h1>`;
+    }
+    function randFortune() {
+      let rand = parseInt(Math.random(0, 10 + 1) * 10);
+      document.getElementById(
+        "outputDiv"
+      ).innerHTML = `<h1 class="outP">${fortune[rand]}</h1>`;
+    }
+  </script>
+</html>

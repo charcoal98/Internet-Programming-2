@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Math Practive</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://static.vecteezy.com/system/resources/previews/009/392/103/non_2x/button-plus-icon-sign-symbol-design-free-png.png"
+    />
+    <style>
+      :root {
+        --bg: #ffffdf;
+        --secondary: #ffafaf;
+        --primary: #ff0909;
+        --shadow: #0f0f0f;
+      }
+
+      body {
+        font-family: "OCR A Extended", sans-serif;
+        font-size: 14pt;
+        background: var(--bg);
+      }
+
+      div {
+        margin-right: auto;
+        margin-left: auto;
+        width: 40%;
+        background: var(--secondary);
+        padding: 20px;
+        border: solid var(--primary) 2px;
+        border-radius: 10px;
+        box-shadow: 7px 7px 5px var(--shadow);
+      }
+      table {
+        margin-right: auto;
+        margin-left: auto;
+        width: 40%;
+        background: var(--secondary);
+        padding: 20px;
+        border: solid var(--primary) 2px;
+        border-radius: 10px;
+        box-shadow: 7px 7px 5px var(--shadow);
+      }
+      th,
+      td {
+        width: 50%;
+      }
+      p {
+        text-align: center;
+        color: #000000;
+        font-size: x-large;
+      }
+      h1 {
+        text-align: center;
+        color: var(--primary);
+        text-shadow: 3px 3px 1px var(--shadow);
+      }
+
+      input {
+        width: 200px;
+        height: 30px;
+        font-size: 14pt;
+        text-align: center;
+      }
+      .center {
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Math Questions</h1>
+    <form id="gradeForm">
+      <table>
+        <tr>
+          <th class="text" id="Query">Query:</th>
+          <th id="input"><input type="text" id="ans" min="2" max="100" /></th>
+        </tr>
+        <tr>
+          <th>
+            <input
+              type="button"
+              onclick="Check()"
+              value="Check"
+              id="btnCheck"
+            />
+          </th>
+        </tr>
+      </table>
+      <div id="displayArea"></div>
+    </form>
+  </body>
+  <script>
+    let a, b, add, sub, mult, div;
+    let incorrectAnswers = 0;
+    let question = 0;
+    let opperation;
+    let answerCorrect;
+
+    function RandomizeInputs() {
+      //Clears inputs
+      document.getElementById("ans").value = "";
+
+      //Resets Query color
+      document.getElementById("Query").style = "color: #000000";
+
+      //Generate random numbers
+      a = Math.random() * 12;
+      b = Math.random() * 12;
+      a++;
+      b++;
+      Calculate(); //Call
+    }
+
+    function Calculate() {
+      a = parseInt(a);
+      b = parseInt(b);
+
+      //Calculate Anwsers
+      add = a + b; //Additon
+      sub = add - a; //Subtraction
+      mult = a * b; //Multiplication
+      div = mult / a; //Division
+
+      //Generate random opperation
+      opperation = parseInt(Math.random() * 4);
+
+      //Query User
+      switch (opperation) {
+        case 0:
+          document.getElementById(
+            "Query"
+          ).innerHTML = `Addition: ${a} + ${b} =`;
+          document.getElementById("input").innerHTML =
+            "<input type='' id='ans' min='2' max='24' />";
+          answerCorrect = add;
+          console.log(`add ${add}`);
+          break;
+        case 1:
+          document.getElementById(
+            "Query"
+          ).innerHTML = `Subtraction: ${add} - ${a} =`;
+          document.getElementById("input").innerHTML =
+            "<input type='' id='ans' min='1' max='12' />";
+          answerCorrect = sub;
+          console.log(`sub ${sub} `);
+          break;
+        case 2:
+          document.getElementById(
+            "Query"
+          ).innerHTML = `Multiplication: ${a} * ${b} =`;
+          document.getElementById("input").innerHTML =
+            "<input type='' id='ans' min='1' max='144' />";
+          answerCorrect = mult;
+          console.log(`mult ${mult}`);
+          break;
+        case 3:
+          document.getElementById(
+            "Query"
+          ).innerHTML = `Division: ${mult} / ${a} =`;
+          document.getElementById("input").innerHTML =
+            "<input type='' id='ans' min='1' max='12' />";
+          answerCorrect = div;
+          console.log(`div ${div}`);
+          break;
+      }
+    }
+
+    function Update() {
+      let perc;
+      if (question != 0) {
+        perc = (((question - incorrectAnswers) / question) * 100).toFixed(2);
+        perc += "%";
+      } else {
+        perc = "N/A";
+      }
+
+      //calculate Percentage
+      document.getElementById(
+        "displayArea"
+      ).innerHTML = `<p style='color: #00af00'>Correct Answers: ${
+        question - incorrectAnswers
+      }</p><p style='color: #af0000'>Incorrect Answers: ${incorrectAnswers}</p><p>Score: ${perc}</p>`;
+    }
+
+    function Check() {
+      //Read Input
+      let ans = parseInt(document.getElementById("ans").value);
+      //Iterate Question Count
+      question++;
+      if (answerCorrect == ans) {
+        //changes color to green if correct
+        document.getElementById("Query").style = "color: #00af00";
+
+        setTimeout(RandomizeInputs, 1000); //Generates new random question after 1000 milliseconds
+      } else {
+        //changes color to red if incorrect
+        incorrectAnswers++;
+        document.getElementById("Query").style = "color: #af0000";
+      }
+      Update();
+    }
+
+    //Needs to be run after the html section has initalized
+    RandomizeInputs();
+    Update();
+  </script>
+</html>

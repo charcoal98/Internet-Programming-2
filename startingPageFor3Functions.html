@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Changing a Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <style>
+      h3 {
+        text-align: center;
+      }
+
+      body {
+        background-color: #99ccff;
+        padding: 0.5em;
+      }
+
+      #displayArea {
+        background-color: #fff;
+        border-radius: 25px;
+        height: 15em;
+        text-align: center;
+        box-shadow: 7px 7px 5px #606060;
+        margin-top: 1.5em;
+      }
+
+      #buttonArea {
+        text-align: center;
+        margin-top: 1.5em;
+      }
+    </style>
+
+    <script>
+      function processForm() {
+        let usrName, usrPswd, usrCom, out;
+        usrName = document.getElementById("name").value;
+        usrPswd = document.getElementById("pwd").value;
+        usrCom = document.getElementById("comments").value;
+
+        out = `<p>Name ${usrName}</p><p>Password ${usrPswd}</p><p>Comments ${usrCom}</p>`;
+
+        document.getElementById("displayArea").innerHTML = out;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h3>Using JavaScript to Modify a Webpage</h3>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4" id="formDiv">
+          <form>
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholer="Enter name"
+                name="name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="pwd"
+                placeholder="Enter password"
+                name="pswd"
+              />
+            </div>
+            <div class="form-group">
+              <label for="comments">Comments:</label>
+              <textarea
+                class="form-control"
+                id="comments"
+                name="comments"
+              ></textarea>
+            </div>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="processForm()"
+            >
+              Process Form
+            </button>
+          </form>
+        </div>
+        <div class="col-md-4" id="displayArea">
+          <p>Output will go here</p>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </body>
+</html>

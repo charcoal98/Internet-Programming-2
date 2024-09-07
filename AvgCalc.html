@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Math Forms</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <style>
+      h3 {
+        text-align: center;
+      }
+
+      body {
+        background-color: #dd99ff;
+        padding: 0.5em;
+      }
+
+      #formDiv {
+        margin-top: 1.5em;
+        font-size: 1.25em;
+      }
+
+      #displayArea {
+        background-color: #fff;
+        border-radius: 25px;
+        min-height: 15em;
+        text-align: center;
+        box-shadow: 7px 7px 0px #606060;
+        margin-top: 1.5em;
+        font-size: 1.25em;
+      }
+
+      #buttonArea {
+        text-align: center;
+        margin-top: 1em;
+      }
+      #buttonArea button {
+        width: 45%;
+        margin: 0.2em;
+      }
+    </style>
+
+    <script>
+      //vars
+      let score1, score2, score3;
+      let avg;
+      let out;
+      function calc() {
+        score1 = parseFloat(document.getElementById("numOneIn").value);
+        score2 = parseFloat(document.getElementById("numTwoIn").value);
+        score3 = parseFloat(document.getElementById("numThreeIn").value);
+        avg = score1 + score2 + score3;
+        avg = (avg / 3).toFixed(2);
+        out = `<p>Test One: ${score1}</p><p>Test Two: ${score2}</p><p>Test Three: ${score3}</p><hr><p>Average:	${avg}</p>`;
+        document.getElementById("displayArea").innerHTML = out;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h3>Math with Number Inputs</h3>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4" id="formDiv">
+          <form>
+            <div class="form-group">
+              <label for="numOneIn">Number:</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter a number"
+                id="numOneIn"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="form-group">
+              <label for="numTwoIn">Number:</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter a number"
+                id="numTwoIn"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="form-group">
+              <label for="numTwoIn">Number:</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter a number"
+                id="numThreeIn"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="row">
+              <div class="col" id="buttonArea">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  onclick="calc()"
+                >
+                  Calculate
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  onclick="document.getElementById('numOneIn').value = '';
+				  document.getElementById('numTwoIn').value = '';
+				  document.getElementById('numThreeIn').value = '';"
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4" id="displayArea"></div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </body>
+</html>

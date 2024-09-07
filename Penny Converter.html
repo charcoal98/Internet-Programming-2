@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Math Forms</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <style>
+      h3 {
+        text-align: center;
+      }
+
+      body {
+        background-color: #dd99ff;
+        padding: 0.5em;
+      }
+
+      #formDiv {
+        margin-top: 1.5em;
+        font-size: 1.25em;
+      }
+
+      #displayArea {
+        background-color: #fff;
+        border-radius: 25px;
+        min-height: 15em;
+        text-align: center;
+        box-shadow: 7px 7px 0px #606060;
+        margin-top: 1.5em;
+        font-size: 1.25em;
+      }
+
+      #buttonArea {
+        text-align: center;
+        margin-top: 1em;
+      }
+      #buttonArea button {
+        width: 45%;
+        margin: 0.2em;
+      }
+    </style>
+
+    <script>
+      //vars
+      let dol, quart, dime, nick, penn;
+      let total;
+      let out;
+      //func
+      function calc() {
+        penn = parseInt(document.getElementById("penny").value);
+        total = penn / 100;
+        let pennFinal = penn;
+
+        dol = Math.trunc(pennFinal / 100);
+        pennFinal = pennFinal % 100;
+
+        quart = Math.trunc(pennFinal / 25);
+        pennFinal = pennFinal % 25;
+
+        dime = Math.trunc(pennFinal / 10);
+        pennFinal = pennFinal % 10;
+
+        nick = Math.trunc(pennFinal / 5);
+        pennFinal = pennFinal % 5;
+
+        out = `<p>${penn} pennies is equal to $${total}</p>
+        <p>You can exchange them for:</p>
+        <p>${dol} Dollars</p>
+        <p>${quart} Quarters</p>
+        <p>${dime} Dimes</p>
+        <p>${nick} Nickels</p>
+        <p>${pennFinal} Pennies</p>`;
+
+        document.getElementById("displayArea").innerHTML = out;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h3>Penny Converter</h3>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4" id="formDiv">
+          <form>
+            <div class="form-group">
+              <label for="penny">Pennies:</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter a number"
+                id="penny"
+                min="0"
+                max="10000"
+              />
+            </div>
+            <div class="row">
+              <div class="col" id="buttonArea">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  onclick="calc()"
+                >
+                  Calculate
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  onclick="document.getElementById('penny').value = '';"
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4" id="displayArea"></div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </body>
+</html>

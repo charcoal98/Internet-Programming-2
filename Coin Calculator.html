@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Math Forms</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <style>
+      h3 {
+        text-align: center;
+      }
+
+      body {
+        background-color: #dd99ff;
+        padding: 0.5em;
+      }
+
+      #formDiv {
+        margin-top: 1.5em;
+        font-size: 1.25em;
+      }
+
+      #displayArea {
+        background-color: #fff;
+        border-radius: 25px;
+        min-height: 15em;
+        text-align: center;
+        box-shadow: 7px 7px 0px #606060;
+        margin-top: 1.5em;
+        font-size: 1.25em;
+      }
+
+      #buttonArea {
+        text-align: center;
+        margin-top: 1em;
+      }
+      #buttonArea button {
+        width: 45%;
+        margin: 0.2em;
+      }
+    </style>
+
+    <script>
+      //vars
+      let dol, quart, dime, nick, penn;
+      let total;
+      let out;
+      function calc() {
+        dol = Number(document.getElementById("dollar").value);
+        let dolV = dol * 1;
+        quart = Number(document.getElementById("quarter").value);
+        let quartV = quart * 0.25;
+        dime = Number(document.getElementById("dime").value);
+        let dimeV = dime * 0.1;
+        nick = Number(document.getElementById("nickel").value);
+        let nickV = nick * 0.05;
+        penn = Number(document.getElementById("penny").value);
+        let pennV = penn * 0.01;
+        total = (dolV + quartV + dimeV + nickV + pennV).toFixed(2);
+        out = `<p>Dollars: ${dol}     $${dolV.toFixed(
+          2
+        )}</p><p>Quarters: ${quart}     $${quartV.toFixed(
+          2
+        )}</p><p>Dimes: ${dime}     $${dimeV.toFixed(
+          2
+        )}</p><p>Nickels: ${nick}     $${nickV.toFixed(
+          2
+        )}</p><p>Pennies: ${penn}     $${pennV.toFixed(
+          2
+        )}</p><p>Total:    $${total}</p>`;
+        document.getElementById("displayArea").innerHTML = out;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h3>Coin Star</h3>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4" id="formDiv">
+          <form>
+            <div class="form-group">
+              <label for="dollar">Dollars:</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter a number"
+                id="dollar"
+                min="0"
+                max="1000"
+              />
+            </div>
+            <div class="form-group">
+              <label for="quarters">Quarters:</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter a number"
+                id="quarter"
+                min="0"
+                max="1000"
+              />
+            </div>
+            <div class="form-group">
+              <label for="dime">Dimes:</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter a number"
+                id="dime"
+                min="0"
+                max="1000"
+              />
+            </div>
+            <div class="form-group">
+              <label for="nickel">Nickels:</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter a number"
+                id="nickel"
+                min="0"
+                max="1000"
+              />
+            </div>
+            <div class="form-group">
+              <label for="penny">Pennies:</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter a number"
+                id="penny"
+                min="0"
+                max="1000"
+              />
+            </div>
+            <div class="row">
+              <div class="col" id="buttonArea">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  onclick="calc()"
+                >
+                  Calculate
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  onclick="document.getElementById('dollar').value = '';
+				  document.getElementById('quarters').value = '';
+				  document.getElementById('dime').value = '';
+          document.getElementById('nickel').value = '';
+          document.getElementById('penny').value = '';"
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4" id="displayArea"></div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </body>
+</html>

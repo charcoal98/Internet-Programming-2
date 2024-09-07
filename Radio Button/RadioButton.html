@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--I Got board so I styled it better-->
+<html>
+  <head>
+    <title>Radio Button Tux</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon-16x16.png" />
+    <link
+      href="https://fonts.cdnfonts.com/css/ocr-a-extended"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      :root {
+        --bg: #ffffdf;
+        --secondary: #ffafaf;
+        --primary: #ff0909;
+        --shadow: #7f7f6f;
+      }
+
+      body {
+        font-family: "OCR A Extended", sans-serif;
+        font-size: 16pt;
+        background: var(--bg);
+      }
+
+      #displayArea {
+        margin-right: auto;
+        margin-left: auto;
+        width: 40%;
+        background: var(--secondary);
+        padding: 20px;
+        border: solid var(--primary) 2px;
+        border-radius: 5px;
+        box-shadow: 3px 3px 7px var(--shadow);
+      }
+      table {
+        margin-right: auto;
+        margin-left: auto;
+        width: 40%;
+        background: var(--secondary);
+        padding: 20px;
+        border: solid var(--primary) 2px;
+        border-radius: 5px;
+        border-collapse: separate;
+        box-shadow: 3px 3px 7px var(--shadow);
+      }
+      .row {
+        padding: 50px;
+      }
+      #ans {
+        width: 50px;
+      }
+      th,
+      td {
+        width: 50%;
+      }
+
+      p {
+        text-align: center;
+        color: #000000;
+        font-size: x-large;
+      }
+      h1 {
+        text-align: center;
+        color: var(--primary);
+        text-shadow: 2px 2px 1px var(--shadow);
+      }
+
+      input {
+        width: 200px;
+        height: 30px;
+        font-size: 14pt;
+        text-align: center;
+      }
+      .text {
+        margin-left: auto;
+        width: 60%;
+        font-size: 130%;
+      }
+      #input {
+        width: 25%;
+      }
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <script>
+    function pic(str) {
+      document.getElementById(
+        "displayArea"
+      ).innerHTML = `<img src="./images/${str}" />`;
+    }
+  </script>
+  <body>
+    <h1>Tux</h1>
+
+    <form class="container" id="gradeForm">
+      <div class="row">
+        <div class="col-8" id="displayArea">
+          <img src="./images/Tux.png" />
+        </div>
+        <div class="col-3">
+          <label for="tux">Tux</label>
+          <input
+            type="radio"
+            id="tux"
+            name="picture"
+            value="tux"
+            checked
+            onchange="pic('Tux.png')"
+          />
+          <label for="tuxN">New Tux</label>
+          <input
+            type="radio"
+            id="tuxN"
+            name="picture"
+            value="tux"
+            onchange="pic('tux_new.jpg')"
+          />
+          <label for="tuz">Tuz</label>
+          <input
+            type="radio"
+            id="tuz"
+            name="picture"
+            value="tux"
+            onchange="pic('tuz.png')"
+          />
+          <label for="tuxPax">Pax Tux</label>
+          <input
+            type="radio"
+            id="tuxPax"
+            name="picture"
+            value="tux"
+            onchange="pic('Pax_tux.png')"
+          />
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

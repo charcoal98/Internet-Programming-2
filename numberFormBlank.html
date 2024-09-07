@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Math Forms</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <style>
+      h3 {
+        text-align: center;
+      }
+
+      body {
+        background-color: #dd99ff;
+        padding: 0.5em;
+      }
+
+      #formDiv {
+        margin-top: 1.5em;
+        font-size: 1.25em;
+      }
+
+      #displayArea {
+        background-color: #fff;
+        border-radius: 25px;
+        min-height: 15em;
+        text-align: center;
+        box-shadow: 7px 7px 0px #606060;
+        margin-top: 1.5em;
+        font-size: 1.25em;
+      }
+
+      #buttonArea {
+        text-align: center;
+        margin-top: 1em;
+      }
+      #buttonArea button {
+        width: 45%;
+        margin: 0.2em;
+      }
+    </style>
+
+    <script>
+      let out;
+      let add, sub, mult, div, mod;
+      function doMath() {
+        a = document.getElementById("numOneIn").value;
+        b = document.getElementById("numTwoIn").value;
+        add = a + b;
+        sub = a - b;
+        mult = a * b;
+        div = a / b;
+        mod = a % b;
+        out = `<p>Addition: ${add}</p><p>Subtraction: ${sub}</p><p>Multipication: ${mult}</p><p>Division: ${div}</p><p>Modulus: ${mod}</p>`;
+        document.getElementById("displayArea").innerHTML = out;
+      }
+      function doNumberMath(a, b) {
+        a = document.getElementById("numOneIn").value;
+        a = Number(a);
+        b = document.getElementById("numTwoIn").value;
+        b = Number(b);
+        add = a + b;
+        sub = a - b;
+        mult = a * b;
+        div = a / b;
+        mod = a % b;
+        out = `<p>Addition: ${add}</p><p>Subtraction: ${sub}</p><p>Multipication: ${mult}</p><p>Division: ${div}</p><p>Modulus: ${mod}</p>`;
+        document.getElementById("displayArea").innerHTML = out;
+      }
+      function doIntMath(a, b) {
+        a = document.getElementById("numOneIn").value;
+        a = parseInt(a);
+        b = document.getElementById("numTwoIn").value;
+        b = parseInt(b);
+        add = a + b;
+        sub = a - b;
+        mult = a * b;
+        div = a / b;
+        mod = a % b;
+        out = `<p>Addition: ${add}</p><p>Subtraction: ${sub}</p><p>Multipication: ${mult}</p><p>Division: ${div}</p><p>Modulus: ${mod}</p>`;
+        document.getElementById("displayArea").innerHTML = out;
+      }
+      function doFloatMath(a, b) {
+        a = document.getElementById("numOneIn").value;
+        a = parseFloat(a);
+        b = document.getElementById("numTwoIn").value;
+        b = parseFloat(b);
+        add = a + b;
+        sub = a - b;
+        mult = a * b;
+        div = a / b;
+        mod = a % b;
+        out = `<p>Addition: ${add}</p><p>Subtraction: ${sub}</p><p>Multipication: ${mult}</p><p>Division: ${div}</p><p>Modulus: ${mod}</p>`;
+        document.getElementById("displayArea").innerHTML = out;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h3>Math with Number Inputs</h3>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4" id="formDiv">
+          <form>
+            <div class="form-group">
+              <label for="numOneIn">Number:</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter a number"
+                id="numOneIn"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="form-group">
+              <label for="numTwoIn">Number:</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter a number"
+                id="numTwoIn"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div class="row">
+              <div class="col" id="buttonArea">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  onclick="doMath()"
+                >
+                  Do Math
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  onclick="doNumberMath()"
+                >
+                  Do Math 'Number'
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  onclick="doIntMath()"
+                >
+                  Do Math 'Integer'
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  onclick="doFloatMath()"
+                >
+                  Do Math 'Float'
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4" id="displayArea"></div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </body>
+</html>

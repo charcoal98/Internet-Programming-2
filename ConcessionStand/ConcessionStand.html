@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Concession Stand</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <style>
+    h1 {
+      text-align: center;
+    }
+
+    body {
+      background-color: skyblue;
+    }
+
+    #outputDiv {
+      min-height: 606px;
+      background-color: #fffff7;
+      border-radius: 20px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      text-align: center;
+      font-size: 1.5em;
+      border: solid #afafaf 2px;
+    }
+
+    .payment {
+      text-align: center;
+      width: 50%;
+    }
+
+    .cont {
+      background-color: #fffff7;
+      border-radius: 20px;
+      text-align: center;
+      font-size: 1.5em;
+      padding: 10px;
+      border: solid #afafaf 2px;
+    }
+
+    #buttonDiv {
+      text-align: center;
+      margin-top: 1.5em;
+    }
+
+    .btn {
+      width: 100%;
+      margin: 10px;
+    }
+
+    table,
+    td {
+      border: 0px;
+    }
+
+    th {
+      width: 443px;
+
+    }
+
+    tbody {
+      width: 100%;
+    }
+
+    tr {
+      margin: 20px;
+      width: 100%;
+    }
+
+    .emoji {
+      height: 40px;
+      width: 40px;
+    }
+
+    .orderButton {
+      width: 270px;
+      height: 70px;
+      margin-top: 10px;
+    }
+
+    .orderCheck {
+      width: 270px;
+      height: 30px;
+      margin-top: 10px;
+    }
+
+    .calcButton {
+      width: 250px;
+      height: 60px;
+      margin: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <h1>Concession Stand</h1>
+
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-5 cont" style="border-top-right-radius: 0; border-bottom-right-radius: 0;">
+
+        <div class="row">
+          <div class="col-6"><img src="./images/hamburger.png" class="emoji" /><input class="orderButton" type="button"
+              onclick="addOrder(0)" value="Hamburger" id="btnCalc" /></div>
+          <div class="col-6"><img src="./images/cheeseburger.jpg" class="emoji" /><input class="orderButton"
+              type="button" onclick="addOrder(1)" value="Cheeseburger" id="btnCalc" /></div>
+        </div>
+        <div class="row">
+          <div class="col-6"><img src="./images/HotDog.png" class="emoji" /><input class="orderButton" type="button"
+              onclick="addOrder(2)" value="Hot Dog" id="btnCalc" /></div>
+          <div class="col-6"><img src="./images/pizza.png" class="emoji" /><input class="orderButton" type="button"
+              onclick="addOrder(3)" value="Pizza" id="btnCalc" /></div>
+        </div>
+        <div class="row">
+          <div class="col-6"><img src="./images/nachos.png" class="emoji" /><input class="orderButton" type="button"
+              onclick="addOrder(4)" value="Nachos" id="btnCalc" /></div>
+          <div class="col-6"><img src="./images/fries.png" class="emoji" /><input class="orderButton" type="button"
+              onclick="addOrder(5)" value="Fries" id="btnCalc" /></div>
+        </div>
+        <div class="row">
+          <div class="col-6"><img src="./images/cheese.png" class="emoji" /><input class="orderButton" type="button"
+              onclick="addOrder(6)" value="Extra Nacho Cheese" id="btnCalc" /></div>
+          <div class="col-6"><img src="./images/chips.png" class="emoji" /><input class="orderButton" type="button"
+              onclick="addOrder(7)" value="Chips" id="btnCalc"></button></div>
+        </div>
+        <div class="row">
+          <div class="col-6"><img src="./images/candy.png" class="emoji" /><input class="orderButton" type="button"
+              onclick="addOrder(8)" value="Candy" id="btnCalc" /></div>
+          <div class="col-6"><img src="./images/soda.png" class="emoji" /><input class="orderButton" type="button"
+              onclick="addOrder(9)" value="Soda" id="btnCalc" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6"><img src="./images/Water.png" class="emoji" /><input class="orderButton" type="button"
+              onclick="addOrder(10)" value="Water" id="btnCalc" /></div>
+          <div class="col-3"></div>
+        </div>
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6"><input class="orderCheck" id='voidItem' type="checkbox" bind="voidItem" id="btnCalc" />Void
+            and item</div>
+          <div class="col-3"></div>
+        </div>
+        <div class="" id="complete" style="text-align: center"></div>
+
+      </div>
+      <div class="col-5">
+        <table class="row cont" id="outputDiv">
+
+        </table>
+        <div class="row cont"
+          style="padding-right:20px; padding-top: 10px; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0;">
+          <table>
+            <tr>
+              <th style="text-align: right; padding-right:10px;">Total:</th>
+              <th style="text-align: center; padding-right:10px;">$ <input type="text" class='payment' id="total"
+                  min="0" max="100" readonly /></th>
+            </tr>
+            <tr>
+              <th style="text-align: right; padding-right:10px;">Amount Paid:</th>
+              <th style="text-align: center; padding-right:10px;">$ <input type="text" class='payment' id="paid" min="0"
+                  max="100" /></th>
+            </tr>
+            <tr>
+              <th style="text-align: right; padding-right:10px;">Change:</th>
+              <th style="text-align: center; padding-right:10px;">$ <input type="text" class='payment' id="change"
+                  min="0" max="100" readonly /></th>
+            </tr>
+            <tr>
+              <th><input type="reset" class="calcButton" value="New Order" onclick="reset()" />
+
+              </th>
+              <th><input type="button" class="calcButton" onclick="calc()" value="Calculate" id="btnCalc" /></th>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-1"></div>
+    </div>
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4">
+
+      </div>
+      <div class="col-4"></div>
+    </div>
+  </div>
+  </div>
+</body>
+<script>
+
+  let voidItem = false;
+  //food, quantity and price arrays
+  let food = ['Hamburger', 'Cheeseburger', 'Hotdog', 'Pizza', 'Nachos', 'Fries', 'Extra Nacho Cheese', 'Chips', 'Candy', 'Soda', 'Water'];
+  let quantity = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  let price = [3, 3.5, 2.5, 3.75, 3.25, 1.5, 1, .75, 1.25, 1.75, 1.75];
+  let total = 0;
+
+
+  function addOrder(x) {
+    voidItem = document.getElementById('voidItem').checked;
+    if (!voidItem) {
+      quantity[x]++;
+    }
+    else {
+      quantity[x] = 0;
+    }
+    returnPrice();
+  }
+
+  function returnPrice() {
+    total = 0;
+    let out = '<tr><th>Quantity</th><th>Food</th><th>Price</th></tr>';
+    for (i = 0; i < 11; i++) {
+      if (quantity[i] > 0) {
+        out += `<tr>
+            <td>${quantity[i]}</td>
+            <td>${food[i]}</td>
+            <td>$${(price[i] * quantity[i]).toFixed(
+          2
+        )}</td>
+          </tr>`
+        total += (quantity[i] * price[i]);
+      }
+    }
+    console.log(out);
+    document.getElementById('total').value = total.toFixed(
+      2
+    );
+    document.getElementById('outputDiv').innerHTML = out;
+  }
+
+
+  //calculate change
+  function calc() {
+    let paid = Number(document.getElementById('paid').value);
+    document.getElementById('change').value = (paid - total).toFixed(
+      2
+    );
+    document.getElementById('complete').innerHTML = `Order complete. Click "New Order" to continue.`;
+  }
+
+  //reset all values
+  function reset() {
+    total = 0;
+    for (i = 0; i < 11; i++) {
+      quantity[i] = 0;
+    }
+    returnPrice();
+    document.getElementById('complete').innerHTML = '';
+    document.getElementById('paid').value = '';
+    document.getElementById('change').value = '';
+    document.getElementById('total').value = '';
+
+  }
+
+
+  //run reset on reload
+  reset();
+</script>
+
+</html>
